@@ -10,40 +10,6 @@ from rest_framework import status
 from datetime import datetime
 
 
-# @api_view(['POST'])
-# def addOrderItems(request):
-#     data = request.data
-
-#     orderItems = data['orderItems']
-
-#     if orderItems and len(orderItems) == 0:
-#         return Response({'detail':'No Order Items'}, status=status.HTTP_400_BAD_REQUEST)
-    
-#     else:
-#         #Create Order
-#         order = Order.objects.create(
-#             table = data['table'],
-#             totalPrice = data['totalPrice'],
-#         )
-
-#         #create order items
-
-#         for i in orderItems:
-#             menuItem = MenuItem.objects.get(_id=i['menuItem'])
-
-#             item = OrderItem.objects.create(
-#                 menuItem = menuItem,
-#                 order = order,
-#                 name = menuItem.name,
-#                 qty = i['qty'],
-#                 price = i['price'],
-#                 image = menuItem.image.url,
-#             )
-#             #update stock
-#             # menuItem.save()
-
-#         serializer = OrderSerializer(order, many=False)
-#         return Response(serializer.data)
 
 @api_view(['POST'])
 def addOrderItems(request):

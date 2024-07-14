@@ -18,7 +18,7 @@ from rest_framework import status
 def update_card_type_setting(request):
     data = request.data
     card_type = data.get('card_type') 
-    print(card_type) 
+    # print(card_type) 
     menuItems = MenuItem.objects.all()
     for menuItem in menuItems:
         menuItem.card_type = card_type  
@@ -34,29 +34,6 @@ def getMenuItems(request):
     menuItems = MenuItem.objects.all()
     serializer = MenuItemSerializer(menuItems, many=True)
     return Response(serializer.data)
-    # query = request.query_params.get('keyword')
-    # if query == None:
-    #     query = ''
-
-    # menuItems = MenuItem.objects.filter(name__icontains=query).order_by('-createdAt')
-
-    # page = request.query_params.get('page')
-    # paginator = Paginator(menuItems, 4)
-
-    # try:
-    #     menuItems = paginator.page(page)
-    # except PageNotAnInteger:
-    #     menuItems = paginator.page(1)
-    # except EmptyPage:
-    #     menuItems = paginator.page(paginator.num_pages)
-
-    # if page == None:
-    #     page = 1
-
-    # page = int(page)
-
-    # serializer = MenuItemSerializer(menuItems, many=True)
-    # return Response({'menuItems': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
@@ -135,22 +112,6 @@ def uploadImage(request):
     menuItem.save()
 
     return Response('Image was uploaded successfully')
-
-    
-# @api_view(['POST'])
-# def createUploadImage(request):
-#     data = request.data
-
-#     try:
-        
-#         menuItem = MenuItem.objects.create()
-#     except Exception as e:
-#         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
-   
-#     menuItem.image = request.FILES.get('image')
-#     menuItem.save()
-
-#     return Response('Image was uploaded successfully', status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET'])

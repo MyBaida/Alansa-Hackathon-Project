@@ -11,8 +11,6 @@ urlpatterns = [
     path('table/create/', createTable, name='table-create'),
     path('upload/', uploadImage, name='image-upload'),
 
-    # path('create-upload/', createUploadImage, name='menu-item-image-upload'),
-
     path('<str:pk>/', getMenuItem, name='menuItem'),
 
     path('table/<str:pk>/', getTable, name='table'),

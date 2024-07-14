@@ -27,15 +27,6 @@ def getCategory(request, pk):
     return Response(serializer.data)
 
 
-# @api_view(['POST'])
-# @permission_classes([IsAdminUser])
-# def createCategory(request):
-#     category = Category.objects.create(
-#     )
-#     serializer = CategorySerializer(category, many=False)
-#     return Response(serializer.data)
-
-
 @api_view(['POST'])
 # @permission_classes([IsAdminUser])
 def createCategory(request):
